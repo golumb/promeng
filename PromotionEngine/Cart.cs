@@ -12,7 +12,7 @@ namespace PromotionEngine
 
         public Cart()
         {
-            priceList = new Dictionary<string, decimal>();
+            priceList = DataAccess.GetPrices();
             Items = new Dictionary<string, CartItem>();
         }
 
