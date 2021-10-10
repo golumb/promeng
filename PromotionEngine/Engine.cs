@@ -16,11 +16,19 @@ namespace PromotionEngine
         public Cart ApplyPromotions(Cart cart)
         {
             var newCart = cart;
+            var minTotal = cart.CartTotal();
+            var bestIndex = -1;
 
             var arr = Promotions.ToArray();
-            for (var i=0; i<arr.Length; ++i)
+            var permutations = EngineMaths.GetAllPermutaions(arr.Length);
+
+            for (var p = 0; p < permutations.Length; ++p)
             {
-                arr[i].Apply(ref newCart);
+                var __cart = cart;
+                for (var i = 0; i < permutations.Length; ++i)
+                {
+                    arr[i].Apply(ref newCart);
+                }
             }
 
             return newCart;
