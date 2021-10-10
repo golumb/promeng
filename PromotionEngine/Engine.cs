@@ -24,7 +24,7 @@ namespace PromotionEngine
 
             for (var p = 0; p < permutations.Length; ++p)
             {
-                var __cart = cart;
+                var __cart = cart.DeepClone(); ;
                 for (var i = 0; i < permutations[p].Length; ++i)
                 {
                     arr[permutations[p][i]].Apply(ref __cart);
