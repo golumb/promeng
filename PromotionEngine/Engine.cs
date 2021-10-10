@@ -15,7 +15,15 @@ namespace PromotionEngine
         }
         public Cart ApplyPromotions(Cart cart)
         {
-            return cart;
+            var newCart = cart;
+
+            var arr = Promotions.ToArray();
+            for (var i=0; i<arr.Length; ++i)
+            {
+                arr[i].Apply(ref newCart);
+            }
+
+            return newCart;
         }
     }
 }
