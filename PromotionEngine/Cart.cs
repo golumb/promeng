@@ -42,7 +42,7 @@ namespace PromotionEngine
 
         public decimal CartTotal()
         {
-            return Items.Sum(i => i.Value.PromotionApplied ? i.Value.SubtotalAfterPromotion : (i.Value.Sku.Price * i.Value.Count));
+            return Items.Sum(i => i.Value.PromotionApplied ? (decimal) i.Value.SubtotalAfterPromotion : (i.Value.Sku.Price * i.Value.Count));
         }
 
         public void ApplyPromotion(string Id, decimal subtotalAfterPromotion)
