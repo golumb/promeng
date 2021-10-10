@@ -1,9 +1,16 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace PromotionEngine
 {
     public class Cart
     {
+        private Dictionary<string, decimal> priceList;
+
+        public Cart()
+        {
+            priceList = new Dictionary<string, decimal>();
+        }
 
         public void Add(string Id, uint count)
         {
