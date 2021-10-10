@@ -75,5 +75,15 @@ namespace PromotionEngine
             else
                 return false;
         }
+
+        public Cart DeepClone()
+        {
+            var newCart = new Cart();
+            this.Items
+                .ToList()
+                .ForEach(i => newCart.Add(i.Key, i.Value.Count));
+
+            return newCart;
+        }
     }
 }

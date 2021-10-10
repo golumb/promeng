@@ -33,7 +33,7 @@ namespace PromotionEngineTests
             sut.Add("A", 1);
             sut.Add("B", 1);
             sut.Add("C", 1);
-            sut.ApplyPromotion("A", 30.0m);
+            sut.ApplyPromotion("A", 30.0m);   // not in the scenario, just testing
 
             Assert.That(sut.CartTotal(), Is.EqualTo(80.0m));
         }
@@ -44,10 +44,27 @@ namespace PromotionEngineTests
             sut.Add("A", 1);
             sut.Add("B", 1);
             sut.Add("C", 1);
-            sut.ApplyPromotion("A", 30.0m);
+            sut.ApplyPromotion("A", 30.0m);  // not in the scenario, just testing
 
             Assert.That(sut.IsPromotionApplied("A"), Is.True);
             Assert.That(sut.IsPromotionApplied("B"), Is.False);
+        }
+
+        [Test]
+        public void DeepClone()
+        {
+            sut.Add("A", 1);
+            sut.Add("B", 1);
+            sut.Add("C", 1);
+
+            var newCart = sut.DeepClone();
+            newCart.ApplyPromotion("A", 30.0m); // not in the scenario, just testing
+
+            Assert.That(sut.IsPromotionApplied("A"), Is.False);
+            Assert.That(newCart.IsPromotionApplied("A"), Is.True);
+            Assert.That(sut.CartTotal(), Is.EqualTo(100.0m));
+            Assert.That(newCart.CartTotal(), Is.EqualTo(80.0m));
+
         }
     }
 }
