@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PromotionEngine
 {
-    interface IPromotion
+    public interface IPromotion
     {
         /// <summary>
         /// applies promotion to a cart
