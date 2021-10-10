@@ -82,7 +82,7 @@ namespace PromotionEngineTests
             {
                 {"A", 3},
                 {"B", 5},
-                {"C", 1},
+                //{"C", 1},
                 {"D", 1}
             };
             return new[] { new object[] { cart } };
@@ -100,7 +100,8 @@ namespace PromotionEngineTests
             sut.Promotions.Add(new Promotion_N_for_Fixed_Price("B", 2, 45.0m));
             sut.Promotions.Add(new Promotion_Two_for_Fixed_Price("C", "D", 30.0m));
 
-            Assert.That(sut.ApplyPromotions(cart).CartTotal(), Is.EqualTo(280.0m));
+            //Assert.That(sut.ApplyPromotions(cart).CartTotal(), Is.EqualTo(280.0m));  // this is incorrect, as the scenario 3 has ZERO "C" items
+            Assert.That(sut.ApplyPromotions(cart).CartTotal(), Is.EqualTo(265.0m));
         }
 
 
