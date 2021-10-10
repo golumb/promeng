@@ -44,6 +44,7 @@ namespace PromotionEngine
                     PromotionApplied = true,
                     SubtotalAfterPromotion = _fixedPrice * numberOfTimesApplied
                 };
+                result = true;
             }
 
             return result;
